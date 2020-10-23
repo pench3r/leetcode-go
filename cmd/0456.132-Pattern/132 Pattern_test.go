@@ -18,7 +18,7 @@ type ans struct {
 	bl bool
 }
 
-func Test_TwoSum(t *testing.T) {
+func Test_Problem(t *testing.T) {
 	ss := []sample{
 		{
 			paras{[]int{}},
