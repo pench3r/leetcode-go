@@ -1,8 +1,8 @@
-package internal
+package template
 
 type UnionFind struct {
-	parent, rank	[]int
-	count	int
+	parent, rank []int
+	count        int
 }
 
 func (uf *UnionFind) Init(n int) {
