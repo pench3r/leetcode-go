@@ -17,7 +17,7 @@ func (uf *UnionFind) Init(n int) {
 func (uf *UnionFind) Find(p int) int {
 	root := p
 	for root != uf.parent[root] {
-		root = uf.parent[p]
+		root = uf.parent[root]
 	}
 	// compress path
 	for p != uf.parent[p] {
