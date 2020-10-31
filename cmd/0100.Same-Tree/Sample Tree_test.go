@@ -3,6 +3,8 @@ package leetcode
 import (
 	"fmt"
 	"testing"
+
+	"github.com/pench3r/leetcode-go/structure"
 )
 
 type sample struct {
@@ -37,10 +39,10 @@ func Test_Problem(t *testing.T) {
 			paras{[]int{1, 2, 3}, []int{1, 2, 3}},
 			ans{true},
 		},
-		// {
-		//	paras{[]int{1, 2}, []int{1, nil, 2}},
-		//	ans{false},
-		// },
+		{
+			paras{[]int{1, 2}, []int{1, structure.NULL, 2}},
+			ans{false},
+		},
 		{
 			paras{[]int{1, 2, 1}, []int{1, 1, 2}},
 			ans{false},
