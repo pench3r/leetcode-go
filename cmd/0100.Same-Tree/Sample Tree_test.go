@@ -51,7 +51,8 @@ func Test_Problem(t *testing.T) {
 
 	for _, s := range ss {
 		p, a := s.paras, s.ans
-		fmt.Printf("[except]: %v,  [output]: %v\n", a, isSameTree(p.one, p.two))
+		pt, qt := structure.Ints2TreeNode(p.one), structure.Ints2TreeNode(p.two)
+		fmt.Printf("[except]: %v,  [output]: %v\n", a, isSameTree(pt, qt))
 	}
 
 }
