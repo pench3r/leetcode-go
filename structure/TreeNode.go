@@ -41,3 +41,16 @@ func Ints2TreeNode(ints []int) *TreeNode {
 
 	return root
 }
+
+func Tree2Preorder(root *TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+	if root.Left == nil && root.Right == nil {
+		return []int{root.Val}
+	}
+	res := []int{root.Val}
+	res = append(res, Tree2Preorder(root.Left)...)
+	res = append(res, Tree2Preorder(root.Right)...)
+	return res
+}
