@@ -30,6 +30,10 @@ func Test_Problem(t *testing.T) {
 			paras{[]int{3, 1, 4, structure.NULL, structure.NULL, 2}},
 			ans{[]int{2, 1, 4, structure.NULL, structure.NULL, 3}},
 		},
+		{ // morris traversal
+			paras{[]int{16, 12, 24, 4, 15, 18, 27}},
+			ans{[]int{4, 12, 15, 16, 18, 24, 27}},
+		},
 	}
 
 	for _, s := range ss {
@@ -37,6 +41,8 @@ func Test_Problem(t *testing.T) {
 		root := structure.Ints2TreeNode(p.one)
 		recoverTree(root)
 		fmt.Printf("[except]: %v,  [output]: %v\n", a, structure.Tree2Preorder(root))
+		root = structure.Ints2TreeNode(p.one)
+		morrisTravelsal(root)
 	}
 
 }
