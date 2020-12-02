@@ -3,23 +3,17 @@ package leetcode
 import "github.com/pench3r/leetcode-go/structure"
 
 func mergeKLists(lists []*structure.ListNode) *structure.ListNode {
-	return mergeLists(lists, 0, len(lists)-1)
-}
-
-func mergeLists(lists []*structure.ListNode, start int, end int) *structure.ListNode {
-	if start <= end {
-		if start == end {
-			return lists[start]
-		}
-		if end-start == 1 {
-			return mergeTwoLists(lists[start], lists[end])
-		}
-		mid := start + (end-start+1)/2
-		leftList := mergeLists(lists, start, mid)
-		rightList := mergeLists(lists, mid+1, end)
-		return mergeTwoLists(leftList, rightList)
+	length := len(lists)
+	if length < 1 {
+		return nil
 	}
-	return nil
+	if length == 1 {
+		return lists[0]
+	}
+	mid := length / 2
+	left := mergeKLists(lists[:mid])
+	right := mergeKLists(lists[mid:])
+	return mergeTwoLists(left, right)
 }
 
 func mergeTwoLists(l1 *structure.ListNode, l2 *structure.ListNode) *structure.ListNode {
