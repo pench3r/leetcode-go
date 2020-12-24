@@ -25,7 +25,7 @@ func Test_Problem(t *testing.T) {
 			ans{2},
 		},
 		{
-			paras{[]int{3, 1, 3, 4, 2}},
+			paras{[]int{3, 1, 4, 3, 2}},
 			ans{3},
 		},
 	}
