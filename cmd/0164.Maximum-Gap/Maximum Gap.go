@@ -1,14 +1,22 @@
 package leetcode
 
-import "fmt"
-
 func maximumGap(nums []int) int {
 	if len(nums) < 2 {
 		return 0
 	}
 	quickSort(nums, 0, len(nums)-1)
-	fmt.Println(nums)
-	return 0
+	res := 0
+	for i := 1; i < len(nums); i++ {
+		res = max(res, nums[i]-nums[i-1])
+	}
+	return res
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 
 func quickSort(nums []int, lo int, hi int) {
@@ -19,11 +27,11 @@ func quickSort(nums []int, lo int, hi int) {
 	right := hi
 	piovt := lo
 	for lo < hi {
-		for nums[lo] <= nums[piovt] && lo < hi {
-			lo++
-		}
 		for nums[hi] >= nums[piovt] && lo < hi {
 			hi--
+		}
+		for nums[lo] <= nums[piovt] && lo < hi {
+			lo++
 		}
 		if lo < hi {
 			swap(nums, lo, hi)
