@@ -47,3 +47,39 @@ func swap(nums []int, l int, r int) {
 	nums[l] = nums[r]
 	nums[r] = tmp
 }
+
+func maximumGap1(nums []int) int {
+	if len(nums) < 2 {
+		return 0
+	}
+	maxNum := 0
+	for i := 0; i < len(nums); i++ {
+		maxNum = max(maxNum, nums[i])
+	}
+	exp := 1
+	aux := make([]int, len(nums))
+	for (maxNum / exp) > 0 {
+		count := make([]int, 10)
+		for i := 0; i < len(nums); i++ {
+			count[(nums[i]/exp)%10]++
+		}
+		for i := 1; i < len(count); i++ {
+			count[i] += count[i-1]
+		}
+		for i := len(nums) - 1; i >= 0; i-- {
+			tmp := count[(nums[i]/exp)%10]
+			tmp--
+			aux[tmp] = nums[i]
+			count[(nums[i]/exp)%10] = tmp
+		}
+		for i := 0; i < len(nums); i++ {
+			nums[i] = aux[i]
+		}
+		exp *= 10
+	}
+	res := 0
+	for i := 1; i < len(aux); i++ {
+		res = max(res, aux[i]-aux[i-1])
+	}
+	return res
+}
